@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    {{- include "labels" . | nindent 6 }}
+  name: {{ .Chart.Name }}
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      {{- include "selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        envFrom:
+        - secretRef:
+            name: {{ .Chart.Name }}-license
+        image: {{ .Values.coral.image }}:{{ default .Chart.AppVersion .Values.coral.tag }}
+        {{- if .Values.coral.pullPolicy }}
+        imagePullPolicy: {{ .Values.coral.pullPolicy }}
+        {{- end }}
+        name: coral
+        ports:
+        - containerPort: 55677
+          hostPort: 55677
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /var/lib/kubelet/device-plugins
+          name: device-plugins
+        - mountPath: /sys
+          name: sys
+      - image: {{ .Values.monitor.image }}:{{ .Values.monitor.tag }}
+        {{- if .Values.monitor.pullPolicy }}
+        imagePullPolicy: {{ .Values.monitor.pullPolicy }}
+        {{- end }}
+        name: monitor
+        {{- if .Values.monitor.port }}
+        ports:
+        - containerPort: 19999
+          hostPort: {{ .Values.monitor.port }}
+        {{- end }}
+      priorityClassName: system-node-critical
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/device-plugins
+        name: device-plugins
+      - hostPath:
+          path: /sys
+        name: sys

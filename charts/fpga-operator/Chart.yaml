@@ -1,0 +1,18 @@
+apiVersion: v2
+appVersion: 1.8
+description: Simplifying FPGA management in Kubernetes
+home: https://inaccel.com
+icon: https://en.gravatar.com/userimage/147236320/b395338a451c3220272055a0970bbd47.png?size=1250
+keywords:
+- inaccel
+- fpga
+- operator
+maintainers:
+- name: InAccel
+  email: info@inaccel.com
+name: fpga-operator
+sources:
+- https://docs.inaccel.com
+- https://github.com/inaccel/helm
+type: application
+version: 1.0.0
