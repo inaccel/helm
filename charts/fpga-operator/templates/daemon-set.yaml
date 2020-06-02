@@ -34,6 +34,9 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
+        - mountPath: /etc/localtime
+          name: localtime
+          readOnly: true
         - mountPath: /var/lib/kubelet/device-plugins
           name: device-plugins
         - mountPath: /sys
@@ -50,6 +53,9 @@ spec:
         {{- end }}
       priorityClassName: system-node-critical
       volumes:
+      - hostPath:
+          path: /etc/localtime
+        name: localtime
       - hostPath:
           path: /var/lib/kubelet/device-plugins
         name: device-plugins
