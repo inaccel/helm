@@ -31,6 +31,10 @@ spec:
         ports:
         - containerPort: 55677
           hostPort: 55677
+        {{- if .Values.coral.resources }}
+        resources:
+          {{- .Values.coral.resources | toYaml | nindent 10 }}
+        {{- end }}
         securityContext:
           privileged: true
         volumeMounts:
@@ -50,6 +54,10 @@ spec:
         ports:
         - containerPort: 19999
           hostPort: {{ .Values.monitor.port }}
+        {{- end }}
+        {{- if .Values.monitor.resources }}
+        resources:
+          {{- .Values.monitor.resources | toYaml | nindent 10 }}
         {{- end }}
       priorityClassName: system-node-critical
       volumes:

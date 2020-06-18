@@ -36,11 +36,13 @@ Operator chart and their default values.
 | -------------------- |  ---------------- |
 | `coral.image`        | `inaccel/coral`   |
 | `coral.pullPolicy`   | `Always`          |
+| `coral.resources`    |                   |
 | `coral.tag`          | *APP VERSION*     |
 | `license`            |                   |
 | `monitor.image`      | `inaccel/monitor` |
 | `monitor.port`       |                   |
 | `monitor.pullPolicy` |                   |
+| `monitor.resources`  |                   |
 | `monitor.tag`        | `latest`          |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
