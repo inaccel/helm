@@ -44,6 +44,7 @@ Operator chart and their default values.
 | `monitor.pullPolicy` |                   |
 | `monitor.resources`  |                   |
 | `monitor.tag`        | `latest`          |
+| `nodeSelector`       |                   |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.

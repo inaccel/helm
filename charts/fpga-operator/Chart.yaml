@@ -15,4 +15,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 1.1.0
+version: 1.2.0
