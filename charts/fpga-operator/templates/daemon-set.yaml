@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
-    {{- include "labels" . | nindent 6 }}
+    {{- include "labels" . | nindent 4 }}
   name: {{ .Chart.Name }}
   namespace: kube-system
 spec:
