@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "selectorLabels" . | nindent 8 }}
+        {{- include "labels" . | nindent 8 }}
     spec:
       containers:
       - env:
@@ -50,11 +50,11 @@ spec:
         imagePullPolicy: {{ .Values.monitor.pullPolicy }}
         {{- end }}
         name: monitor
-        {{- if .Values.monitor.port }}
         ports:
         - containerPort: 19999
+          {{- if .Values.monitor.port }}
           hostPort: {{ .Values.monitor.port }}
-        {{- end }}
+          {{- end }}
         {{- if .Values.monitor.resources }}
         resources:
           {{- .Values.monitor.resources | toYaml | nindent 10 }}
