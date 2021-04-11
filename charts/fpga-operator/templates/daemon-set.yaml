@@ -11,11 +11,22 @@ spec:
       {{- include "selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: coral
       labels:
+        kind: DaemonSet
         {{- include "labels" . | nindent 8 }}
     spec:
       containers:
       - env:
+        {{- if .Values.coral.httpsProxy  }}
+        - name: HTTPS_PROXY
+          value: {{ .Values.coral.httpsProxy }}
+        {{- end }}
+        {{- if .Values.coral.logLevel  }}
+        - name: LOG_LEVEL
+          value: {{ .Values.coral.logLevel }}
+        {{- end }}
         - name: NODE_NAME
           valueFrom:
             fieldRef:
@@ -30,7 +41,9 @@ spec:
         name: coral
         ports:
         - containerPort: 55677
-          hostPort: 55677
+          {{- if .Values.coral.port }}
+          hostPort: {{ .Values.coral.port }}
+          {{- end }}
         {{- if .Values.coral.resources }}
         resources:
           {{- .Values.coral.resources | toYaml | nindent 10 }}
@@ -41,10 +54,39 @@ spec:
         - mountPath: /etc/localtime
           name: localtime
           readOnly: true
-        - mountPath: /var/lib/kubelet/device-plugins
-          name: device-plugins
         - mountPath: /sys
           name: sys
+        - mountPath: /var/lib/inaccel
+          mountPropagation: HostToContainer
+          name: state-root
+        - mountPath: /var/lib/kubelet/device-plugins
+          name: kubelet
+          subPath: device-plugins
+        - mountPath: /var/opt/inaccel
+          name: data-root
+      - env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        image: {{ .Values.daemon.image }}:{{ .Values.daemon.tag }}
+        {{- if .Values.daemon.pullPolicy }}
+        imagePullPolicy: {{ .Values.daemon.pullPolicy }}
+        {{- end }}
+        name: daemon
+        {{- if .Values.daemon.resources }}
+        resources:
+          {{- .Values.daemon.resources | toYaml | nindent 10 }}
+        {{- end }}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /var/lib/inaccel
+          mountPropagation: Bidirectional
+          name: state-root
+        - mountPath: /var/lib/kubelet
+          mountPropagation: Bidirectional
+          name: kubelet
       - image: {{ .Values.monitor.image }}:{{ .Values.monitor.tag }}
         {{- if .Values.monitor.pullPolicy }}
         imagePullPolicy: {{ .Values.monitor.pullPolicy }}
@@ -59,6 +101,24 @@ spec:
         resources:
           {{- .Values.monitor.resources | toYaml | nindent 10 }}
         {{- end }}
+      initContainers:
+      - env:
+        - name: MKRT_CONFIG_PATH
+          value: {{ .Values.root.config }}/runtimes
+        - name: MKRT_SYSROOT_DIR
+          value: /host
+        image: {{ .Values.mkrt.image }}:{{ .Values.mkrt.tag }}
+        {{- if .Values.mkrt.pullPolicy }}
+        imagePullPolicy: {{ .Values.mkrt.pullPolicy }}
+        {{- end }}
+        name: mkrt
+        volumeMounts:
+        - mountPath: /host
+          name: host
+          readOnly: true
+        - mountPath: /var/opt/inaccel/runtimes
+          name: data-root
+          subPath: runtimes
       {{- if .Values.nodeSelector }}
       nodeSelector:
         {{- .Values.nodeSelector | toYaml | nindent 8 }}
@@ -66,11 +126,22 @@ spec:
       priorityClassName: system-node-critical
       volumes:
       - hostPath:
+          path: /
+        name: host
+      - hostPath:
           path: /etc/localtime
         name: localtime
       - hostPath:
-          path: /var/lib/kubelet/device-plugins
-        name: device-plugins
-      - hostPath:
           path: /sys
         name: sys
+      - hostPath:
+          path: /var/lib/kubelet
+        name: kubelet
+      - hostPath:
+          path: {{ .Values.root.data }}
+          type: DirectoryOrCreate
+        name: data-root
+      - hostPath:
+          path: {{ .Values.root.state }}
+          type: DirectoryOrCreate
+        name: state-root

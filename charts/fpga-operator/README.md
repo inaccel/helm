@@ -32,19 +32,32 @@ deletes the release.
 The following table lists the configurable parameters of the InAccel FPGA
 Operator chart and their default values.
 
-| Parameter            | Default           |
-| -------------------- |  ---------------- |
-| `coral.image`        | `inaccel/coral`   |
-| `coral.pullPolicy`   | `Always`          |
-| `coral.resources`    |                   |
-| `coral.tag`          | *APP VERSION*     |
-| `license`            |                   |
-| `monitor.image`      | `inaccel/monitor` |
-| `monitor.port`       |                   |
-| `monitor.pullPolicy` |                   |
-| `monitor.resources`  |                   |
-| `monitor.tag`        | `latest`          |
-| `nodeSelector`       |                   |
+| Parameter            | Default            |
+| -------------------- | ------------------ |
+| `coral.httpsProxy`   |                    |
+| `coral.image`        | `inaccel/coral`    |
+| `coral.logLevel`     | `info`             |
+| `coral.port`         |                    |
+| `coral.pullPolicy`   | `Always`           |
+| `coral.resources`    |                    |
+| `coral.tag`          | *APP VERSION*      |
+| `daemon.image`       | `inaccel/daemon`   |
+| `daemon.pullPolicy`  |                    |
+| `daemon.resources`   |                    |
+| `daemon.tag`         | `latest`           |
+| `license`            |                    |
+| `mkrt.image`         | `inaccel/mkrt`     |
+| `mkrt.pullPolicy`    |                    |
+| `mkrt.tag`           | `latest`           |
+| `monitor.image`      | `inaccel/monitor`  |
+| `monitor.port`       |                    |
+| `monitor.pullPolicy` |                    |
+| `monitor.resources`  |                    |
+| `monitor.tag`        | `latest`           |
+| `nodeSelector`       |                    |
+| `root.config`        | `/etc/inaccel`     |
+| `root.data`          | `/var/opt/inaccel` |
+| `root.state`         | `/var/lib/inaccel` |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.
