@@ -101,6 +101,11 @@ spec:
         resources:
           {{- .Values.monitor.resources | toYaml | nindent 10 }}
         {{- end }}
+      hostAliases:
+      - hostnames:
+        - coral
+        - monitor
+        ip: 127.0.0.1
       initContainers:
       - env:
         - name: MKRT_CONFIG_PATH
