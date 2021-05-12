@@ -56,7 +56,6 @@ Operator chart and their default values.
 | `monitor.tag`        | `latest`           |
 | `nodeSelector`       |                    |
 | `root.config`        | `/etc/inaccel`     |
-| `root.data`          | `/var/opt/inaccel` |
 | `root.state`         | `/var/lib/inaccel` |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to

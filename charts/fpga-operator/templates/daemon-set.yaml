@@ -62,8 +62,10 @@ spec:
         - mountPath: /var/lib/kubelet/device-plugins
           name: kubelet
           subPath: device-plugins
-        - mountPath: /var/opt/inaccel
+        - mountPath: /var/opt/inaccel/runtimes
           name: data-root
+          readOnly: true
+          subPath: runtimes
       - env:
         - name: NODE_NAME
           valueFrom:
@@ -142,9 +144,7 @@ spec:
       - hostPath:
           path: /var/lib/kubelet
         name: kubelet
-      - hostPath:
-          path: {{ .Values.root.data }}
-          type: DirectoryOrCreate
+      - emptyDir: {}
         name: data-root
       - hostPath:
           path: {{ .Values.root.state }}

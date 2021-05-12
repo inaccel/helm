@@ -31,5 +31,4 @@ monitor:
 
 root:
   config: /etc/inaccel
-  data: /var/opt/inaccel
   state: /var/lib/inaccel
