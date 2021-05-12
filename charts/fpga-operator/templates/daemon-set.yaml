@@ -67,6 +67,8 @@ spec:
           readOnly: true
           subPath: runtimes
       - env:
+        - name: DOCKER
+          value: disabled
         - name: NODE_NAME
           valueFrom:
             fieldRef:
