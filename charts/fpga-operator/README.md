@@ -4,11 +4,11 @@ Simplifying FPGA management in Kubernetes
 
 ## Installing the Chart
 
-To install the chart with the release name `my-release`:
+To install the chart with the release name `my-fpga-operator`:
 
 ```console
 $ helm repo add inaccel https://setup.inaccel.com/helm
-$ helm install my-release inaccel/fpga-operator --set license=...
+$ helm install my-fpga-operator inaccel/fpga-operator --set license=...
 ```
 
 These commands deploy InAccel FPGA Operator on the Kubernetes cluster in the
@@ -18,10 +18,10 @@ default configuration.
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `my-release` deployment:
+To uninstall/delete the `my-fpga-operator` deployment:
 
 ```console
-$ helm uninstall my-release
+$ helm uninstall my-fpga-operator
 ```
 
 The command removes all the Kubernetes components associated with the chart and
@@ -45,6 +45,11 @@ Operator chart and their default values.
 | `daemon.pullPolicy`  |                    |
 | `daemon.resources`   |                    |
 | `daemon.tag`         | `latest`           |
+| `driver.enabled`     | `true`             |
+| `driver.image`       | `inaccel/driver`   |
+| `driver.pullPolicy`  |                    |
+| `driver.resources`   |                    |
+| `driver.tag`         | `latest`           |
 | `license`            |                    |
 | `mkrt.image`         | `inaccel/mkrt`     |
 | `mkrt.pullPolicy`    |                    |
@@ -65,7 +70,7 @@ Alternatively, a YAML file that specifies the values for the parameters can be
 provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml inaccel/fpga-operator
+$ helm install my-fpga-operator -f values.yaml inaccel/fpga-operator
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

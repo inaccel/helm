@@ -110,7 +110,27 @@ spec:
         - coral
         - monitor
         ip: 127.0.0.1
+      hostPID: {{ .Values.driver.enabled }}
       initContainers:
+      {{- if .Values.driver.enabled }}
+      - env:
+        - name: DRIVER_SYSROOT_DIR
+          value: /host
+        image: {{ .Values.driver.image }}:{{ .Values.driver.tag }}
+        {{- if .Values.driver.pullPolicy }}
+        imagePullPolicy: {{ .Values.driver.pullPolicy }}
+        {{- end }}
+        name: driver
+        {{- if .Values.driver.resources }}
+        resources:
+          {{- .Values.driver.resources | toYaml | nindent 10 }}
+        {{- end }}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /host
+          name: host
+      {{- end }}
       - env:
         - name: MKRT_CONFIG_PATH
           value: {{ .Values.root.config }}/runtimes

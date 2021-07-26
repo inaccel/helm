@@ -13,6 +13,13 @@ daemon:
   # resources: ...
   tag: latest
 
+driver:
+  enabled: true
+  image: inaccel/driver
+  # pullPolicy: ...
+  # resources: ...
+  tag: latest
+
 # license: ...
 
 mkrt:
