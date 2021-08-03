@@ -50,15 +50,16 @@ Operator chart and their default values.
 | `driver.pullPolicy`  |                    |
 | `driver.resources`   |                    |
 | `driver.tag`         | `latest`           |
+| `kubelet`            | `/var/lib/kubelet` |
 | `license`            |                    |
 | `mkrt.image`         | `inaccel/mkrt`     |
 | `mkrt.pullPolicy`    |                    |
 | `mkrt.tag`           | `latest`           |
 | `monitor.image`      | `inaccel/monitor`  |
 | `monitor.port`       |                    |
-| `monitor.pullPolicy` |                    |
+| `monitor.pullPolicy` | `Always`           |
 | `monitor.resources`  |                    |
-| `monitor.tag`        | `latest`           |
+| `monitor.tag`        | *APP VERSION*      |
 | `nodeSelector`       |                    |
 | `root.config`        | `/etc/inaccel`     |
 | `root.state`         | `/var/lib/inaccel` |

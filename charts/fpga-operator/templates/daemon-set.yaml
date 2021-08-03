@@ -59,9 +59,9 @@ spec:
         - mountPath: /var/lib/inaccel
           mountPropagation: HostToContainer
           name: state-root
-        - mountPath: /var/lib/kubelet/device-plugins
+        - mountPath: /var/lib/kubelet/plugins_registry
           name: kubelet
-          subPath: device-plugins
+          subPath: plugins_registry
         - mountPath: /var/opt/inaccel/runtimes
           name: data-root
           readOnly: true
@@ -88,10 +88,13 @@ spec:
         - mountPath: /var/lib/inaccel
           mountPropagation: Bidirectional
           name: state-root
-        - mountPath: /var/lib/kubelet
+        - mountPath: /var/lib/kubelet/plugins_registry
+          name: kubelet
+          subPath: plugins_registry
+        - mountPath: {{ .Values.kubelet }}
           mountPropagation: Bidirectional
           name: kubelet
-      - image: {{ .Values.monitor.image }}:{{ .Values.monitor.tag }}
+      - image: {{ .Values.monitor.image }}:{{ default .Chart.AppVersion .Values.monitor.tag }}
         {{- if .Values.monitor.pullPolicy }}
         imagePullPolicy: {{ .Values.monitor.pullPolicy }}
         {{- end }}
@@ -154,21 +157,21 @@ spec:
       {{- end }}
       priorityClassName: system-node-critical
       volumes:
+      - emptyDir: {}
+        name: data-root
       - hostPath:
           path: /
         name: host
       - hostPath:
+          path: {{ .Values.kubelet }}
+        name: kubelet
+      - hostPath:
           path: /etc/localtime
         name: localtime
-      - hostPath:
-          path: /sys
-        name: sys
-      - hostPath:
-          path: /var/lib/kubelet
-        name: kubelet
-      - emptyDir: {}
-        name: data-root
       - hostPath:
           path: {{ .Values.root.state }}
           type: DirectoryOrCreate
         name: state-root
+      - hostPath:
+          path: /sys
+        name: sys
