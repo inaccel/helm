@@ -8,7 +8,7 @@ To install the chart with the release name `my-fpga-operator`:
 
 ```console
 $ helm repo add inaccel https://setup.inaccel.com/helm
-$ helm install my-fpga-operator inaccel/fpga-operator --set license=...
+$ helm install my-fpga-operator inaccel/fpga-operator
 ```
 
 These commands deploy InAccel FPGA Operator on the Kubernetes cluster in the

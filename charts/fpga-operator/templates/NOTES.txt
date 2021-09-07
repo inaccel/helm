@@ -1,7 +1,7 @@
-{{- if .Release.IsInstall -}}
+{{- if .Release.IsInstall }}
 Install
 {{- end -}}
-{{- if .Release.IsUpgrade -}}
+{{- if .Release.IsUpgrade }}
 Upgrad
 {{- end -}}
 ing {{ ( index .Chart.Maintainers 0 ).Name }} [{{ .Chart.Name }}] {{ .Release.Service }} chart.

@@ -16,4 +16,4 @@ name: fpga-operator
 sources:
 - https://github.com/inaccel/helm
 type: application
-version: 2.3.0
+version: 2.3.1

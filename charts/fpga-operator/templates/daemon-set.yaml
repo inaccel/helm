@@ -19,11 +19,18 @@ spec:
     spec:
       containers:
       - env:
-        {{- if .Values.coral.httpsProxy  }}
+        {{- if .Values.coral.httpsProxy }}
         - name: HTTPS_PROXY
           value: {{ .Values.coral.httpsProxy }}
         {{- end }}
-        {{- if .Values.coral.logLevel  }}
+        {{- if .Values.license }}
+        - name: LICENSE
+          valueFrom:
+            secretKeyRef:
+              key: license
+              name: {{ .Chart.Name }}
+        {{- end }}
+        {{- if .Values.coral.logLevel }}
         - name: LOG_LEVEL
           value: {{ .Values.coral.logLevel }}
         {{- end }}
@@ -31,9 +38,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        envFrom:
-        - secretRef:
-            name: {{ .Chart.Name }}-license
         image: {{ .Values.coral.image }}:{{ default .Chart.AppVersion .Values.coral.tag }}
         {{- if .Values.coral.pullPolicy }}
         imagePullPolicy: {{ .Values.coral.pullPolicy }}
