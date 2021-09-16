@@ -70,7 +70,9 @@ spec:
           name: data-root
           readOnly: true
           subPath: runtimes
-      - env:
+      - args:
+        - --debug={{ .Values.daemon.debug }}
+        env:
         - name: DOCKER
           value: disabled
         - name: NODE_NAME
@@ -128,10 +130,6 @@ spec:
         imagePullPolicy: {{ .Values.driver.pullPolicy }}
         {{- end }}
         name: driver
-        {{- if .Values.driver.resources }}
-        resources:
-          {{- .Values.driver.resources | toYaml | nindent 10 }}
-        {{- end }}
         securityContext:
           privileged: true
         volumeMounts:

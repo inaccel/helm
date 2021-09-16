@@ -41,6 +41,7 @@ Operator chart and their default values.
 | `coral.pullPolicy`   | `Always`           |
 | `coral.resources`    |                    |
 | `coral.tag`          | *APP VERSION*      |
+| `daemon.debug`       | `false`            |
 | `daemon.image`       | `inaccel/daemon`   |
 | `daemon.pullPolicy`  |                    |
 | `daemon.resources`   |                    |
@@ -48,7 +49,6 @@ Operator chart and their default values.
 | `driver.enabled`     | `true`             |
 | `driver.image`       | `inaccel/driver`   |
 | `driver.pullPolicy`  |                    |
-| `driver.resources`   |                    |
 | `driver.tag`         | `latest`           |
 | `kubelet`            | `/var/lib/kubelet` |
 | `license`            |                    |
