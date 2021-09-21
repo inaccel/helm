@@ -74,4 +74,4 @@ provided while installing the chart. For example,
 $ helm install my-fpga-operator -f values.yaml inaccel/fpga-operator
 ```
 
-> **Tip**: You can use the default [values.yaml](values.yaml)
+> **Tip**: You can use the default `values.yaml`

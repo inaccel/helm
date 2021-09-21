@@ -1,5 +1,6 @@
 annotations:
   artifacthub.io/license: Apache-2.0
+  category: Infrastructure
 apiVersion: v2
 appVersion: '2.1'
 description: Simplifying FPGA management in Kubernetes
@@ -16,4 +17,4 @@ name: fpga-operator
 sources:
 - https://github.com/inaccel/helm
 type: application
-version: 2.4.0
+version: 2.4.1
