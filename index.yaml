@@ -3,6 +3,30 @@ entries:
   fpga-operator:
   - annotations:
       artifacthub.io/license: Apache-2.0
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: "2.1"
+    created: "2021-09-21T12:09:10.454912581Z"
+    description: Simplifying FPGA management in Kubernetes
+    digest: 2461581c25108575034a0fc54b56f06850a2b11b40dc4adf6c1f9b7d07371a38
+    home: https://inaccel.com
+    icon: https://en.gravatar.com/userimage/147236320/2a11cd2992b4521ec287587f03fae35c.png?size=1250
+    keywords:
+    - inaccel
+    - fpga
+    - operator
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: fpga-operator
+    sources:
+    - https://github.com/inaccel/helm
+    type: application
+    urls:
+    - https://github.com/inaccel/helm/releases/download/fpga-operator-2.4.1/fpga-operator-2.4.1.tgz
+    version: 2.4.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
     apiVersion: v2
     appVersion: "2.1"
     created: "2021-09-16T13:48:49.029646138Z"
