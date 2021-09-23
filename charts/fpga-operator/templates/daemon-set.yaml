@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
+      kind: DaemonSet
       {{- include "selectorLabels" . | nindent 6 }}
   template:
     metadata:
@@ -117,6 +118,7 @@ spec:
       hostAliases:
       - hostnames:
         - coral
+        - daemon
         - monitor
         ip: 127.0.0.1
       hostPID: {{ .Values.driver.enabled }}

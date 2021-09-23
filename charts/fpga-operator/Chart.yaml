@@ -1,5 +1,8 @@
 annotations:
   artifacthub.io/license: Apache-2.0
+  artifacthub.io/links: |
+    - name: Documentation
+      url: https://docs.inaccel.com
   category: Infrastructure
 apiVersion: v2
 appVersion: '2.1'
@@ -15,6 +18,7 @@ maintainers:
   email: info@inaccel.com
 name: fpga-operator
 sources:
+- https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.4.1
+version: 2.5.0

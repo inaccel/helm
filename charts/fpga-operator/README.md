@@ -61,6 +61,11 @@ Operator chart and their default values.
 | `monitor.resources`  |                    |
 | `monitor.tag`        | *APP VERSION*      |
 | `nodeSelector`       |                    |
+| `reef.debug`         | `false`            |
+| `reef.image`         | `inaccel/reef`     |
+| `reef.pullPolicy`    |                    |
+| `reef.resources`     |                    |
+| `reef.tag`           | `latest`           |
 | `root.config`        | `/etc/inaccel`     |
 | `root.state`         | `/var/lib/inaccel` |
 

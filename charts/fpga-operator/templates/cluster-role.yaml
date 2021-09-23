@@ -6,3 +6,6 @@ rules:
 - apiGroups: [""]
   resources: ["nodes"]
   verbs: ["patch"]
+- apiGroups: ["admissionregistration.k8s.io"]
+  resources: ["mutatingwebhookconfigurations"]
+  verbs: ["get", "update"]

@@ -38,6 +38,13 @@ monitor:
 
 # nodeSelector: ...
 
+reef:
+  debug: false
+  image: inaccel/reef
+  # pullPolicy: ...
+  # resources: ...
+  tag: latest
+
 root:
   config: /etc/inaccel
   state: /var/lib/inaccel
