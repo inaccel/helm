@@ -13,6 +13,7 @@ keywords:
 - inaccel
 - fpga
 - operator
+kubeVersion: '>=1.18.0-0'
 maintainers:
 - name: InAccel
   email: info@inaccel.com
@@ -21,4 +22,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.5.0
+version: 2.5.1
