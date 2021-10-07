@@ -49,6 +49,11 @@ spec:
           {{- if .Values.coral.port }}
           hostPort: {{ .Values.coral.port }}
           {{- end }}
+        readinessProbe:
+          exec:
+            command:
+            - get
+            - coral
         {{- if .Values.coral.resources }}
         resources:
           {{- .Values.coral.resources | toYaml | nindent 10 }}

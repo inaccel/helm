@@ -5,15 +5,14 @@ annotations:
       url: https://docs.inaccel.com
   category: Infrastructure
 apiVersion: v2
-appVersion: '2.1'
+appVersion: "2.1"
 description: Simplifying FPGA management in Kubernetes
 home: https://inaccel.com
 icon: https://en.gravatar.com/userimage/147236320/2a11cd2992b4521ec287587f03fae35c.png?size=1250
 keywords:
-- inaccel
 - fpga
-- operator
-kubeVersion: '>=1.18.0-0'
+- infrastructure
+kubeVersion: ">= 1.18.0-0"
 maintainers:
 - name: InAccel
   email: info@inaccel.com
@@ -22,4 +21,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.5.1
+version: 2.5.2
