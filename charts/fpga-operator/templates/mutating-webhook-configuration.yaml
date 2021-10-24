@@ -9,7 +9,7 @@ webhooks:
   clientConfig:
     service:
       name: {{ .Chart.Name }}
-      namespace: kube-system
+      namespace: {{ .Release.Namespace }}
   name: reef.inaccel.com
   objectSelector:
     matchLabels:

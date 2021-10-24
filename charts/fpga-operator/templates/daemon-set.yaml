@@ -4,7 +4,7 @@ metadata:
   labels:
     {{- include "labels" . | nindent 4 }}
   name: {{ .Chart.Name }}
-  namespace: kube-system
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     matchLabels:
@@ -165,6 +165,7 @@ spec:
         {{- .Values.nodeSelector | toYaml | nindent 8 }}
       {{- end }}
       priorityClassName: system-node-critical
+      serviceAccountName: {{ .Chart.Name }}
       volumes:
       - emptyDir: {}
         name: data-root

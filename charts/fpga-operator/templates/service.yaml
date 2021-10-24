@@ -4,7 +4,7 @@ metadata:
   labels:
     {{- include "labels" . | nindent 4 }}
   name: {{ .Chart.Name }}
-  namespace: kube-system
+  namespace: {{ .Release.Namespace }}
 spec:
   ports:
   - port: 443

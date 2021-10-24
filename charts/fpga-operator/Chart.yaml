@@ -12,13 +12,13 @@ icon: https://en.gravatar.com/userimage/147236320/2a11cd2992b4521ec287587f03fae3
 keywords:
 - fpga
 - infrastructure
-kubeVersion: ">= 1.18.0-0"
+kubeVersion: '>= 1.18.0-0'
 maintainers:
-- name: InAccel
-  email: info@inaccel.com
+- email: info@inaccel.com
+  name: InAccel
 name: fpga-operator
 sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.5.2
+version: 2.5.3
