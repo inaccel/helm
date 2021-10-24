@@ -9,6 +9,34 @@ entries:
       category: Infrastructure
     apiVersion: v2
     appVersion: "2.1"
+    created: "2021-10-24T21:08:46.599466743Z"
+    description: Simplifying FPGA management in Kubernetes
+    digest: d8ab909b996f4fe7c0b84d2061ec962d4055dc197f79aa7bc09cbceea65e3409
+    home: https://inaccel.com
+    icon: https://en.gravatar.com/userimage/147236320/2a11cd2992b4521ec287587f03fae35c.png?size=1250
+    keywords:
+    - fpga
+    - infrastructure
+    kubeVersion: '>= 1.18.0-0'
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: fpga-operator
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/helm
+    type: application
+    urls:
+    - https://github.com/inaccel/helm/releases/download/fpga-operator-2.5.3/fpga-operator-2.5.3.tgz
+    version: 2.5.3
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: "2.1"
     created: "2021-10-07T12:37:52.328197936Z"
     description: Simplifying FPGA management in Kubernetes
     digest: e54a4a24c1a1ec44195adccc413df5a3814132c7f0e57ad9c40175d961525715
@@ -418,4 +446,4 @@ entries:
     urls:
     - https://github.com/inaccel/helm/releases/download/fpga-operator-1.0.0/fpga-operator-1.0.0.tgz
     version: 1.0.0
-generated: "2020-05-14T07:38:38.87441941Z"
+generated: "2021-10-24T21:08:46.599678646Z"
