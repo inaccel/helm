@@ -20,6 +20,34 @@ driver:
   # pullPolicy: ...
   tag: latest
 
+fpga-discovery:
+  enabled: true
+  fullnameOverride: fpga-discovery
+  master:
+    extraLabelNs:
+    - inaccel
+  worker:
+    config: |
+      core:
+        sources:
+        - custom
+      sources:
+        custom:
+        - matchOn:
+          # intel-fpga
+          - pciId:
+              device: ["09c4", "0b2b"]
+              vendor: ["8086"]
+          # xilinx-fpga
+          - pciId:
+              vendor: ["10ee"]
+          - pciId:
+              device: ["1042", "f010"]
+              vendor: ["1d0f"]
+          name: inaccel/fpga
+          value: enabled
+    configmapName: fpga-discovery
+
 kubelet: /var/lib/kubelet
 
 # license: ...
@@ -35,8 +63,6 @@ monitor:
   pullPolicy: Always
   # resources: ...
   # tag: ...
-
-# nodeSelector: ...
 
 reef:
   debug: false

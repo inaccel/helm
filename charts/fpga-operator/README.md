@@ -60,7 +60,6 @@ Operator chart and their default values.
 | `monitor.pullPolicy` | `Always`           |
 | `monitor.resources`  |                    |
 | `monitor.tag`        | *APP VERSION*      |
-| `nodeSelector`       |                    |
 | `reef.debug`         | `false`            |
 | `reef.image`         | `inaccel/reef`     |
 | `reef.pullPolicy`    |                    |

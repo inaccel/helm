@@ -160,10 +160,8 @@ spec:
         - mountPath: /var/opt/inaccel/runtimes
           name: data-root
           subPath: runtimes
-      {{- if .Values.nodeSelector }}
       nodeSelector:
-        {{- .Values.nodeSelector | toYaml | nindent 8 }}
-      {{- end }}
+        inaccel/fpga: enabled
       priorityClassName: system-node-critical
       serviceAccountName: {{ .Chart.Name }}
       volumes:
