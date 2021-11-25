@@ -32,41 +32,46 @@ deletes the release.
 The following table lists the configurable parameters of the InAccel FPGA
 Operator chart and their default values.
 
-| Parameter            | Default            |
-| -------------------- | ------------------ |
-| `coral.httpsProxy`   |                    |
-| `coral.image`        | `inaccel/coral`    |
-| `coral.logLevel`     | `info`             |
-| `coral.port`         |                    |
-| `coral.pullPolicy`   | `Always`           |
-| `coral.resources`    |                    |
-| `coral.tag`          | *APP VERSION*      |
-| `daemon.debug`       | `false`            |
-| `daemon.image`       | `inaccel/daemon`   |
-| `daemon.pullPolicy`  |                    |
-| `daemon.resources`   |                    |
-| `daemon.tag`         | `latest`           |
-| `driver.enabled`     | `true`             |
-| `driver.image`       | `inaccel/driver`   |
-| `driver.pullPolicy`  |                    |
-| `driver.tag`         | `latest`           |
-| `kubelet`            | `/var/lib/kubelet` |
-| `license`            |                    |
-| `mkrt.image`         | `inaccel/mkrt`     |
-| `mkrt.pullPolicy`    |                    |
-| `mkrt.tag`           | `latest`           |
-| `monitor.image`      | `inaccel/monitor`  |
-| `monitor.port`       |                    |
-| `monitor.pullPolicy` | `Always`           |
-| `monitor.resources`  |                    |
-| `monitor.tag`        | *APP VERSION*      |
-| `reef.debug`         | `false`            |
-| `reef.image`         | `inaccel/reef`     |
-| `reef.pullPolicy`    |                    |
-| `reef.resources`     |                    |
-| `reef.tag`           | `latest`           |
-| `root.config`        | `/etc/inaccel`     |
-| `root.state`         | `/var/lib/inaccel` |
+| Parameter                | Default            |
+| ------------------------ | ------------------ |
+| `coral.httpsProxy`       |                    |
+| `coral.image`            | `inaccel/coral`    |
+| `coral.logLevel`         | `info`             |
+| `coral.port`             |                    |
+| `coral.pullPolicy`       | `Always`           |
+| `coral.resources`        |                    |
+| `coral.tag`              | *APP VERSION*      |
+| `daemon.debug`           | `false`            |
+| `daemon.image`           | `inaccel/daemon`   |
+| `daemon.pullPolicy`      |                    |
+| `daemon.resources`       |                    |
+| `daemon.tag`             | `latest`           |
+| `driver.enabled`         | `true`             |
+| `driver.image`           | `inaccel/driver`   |
+| `driver.pullPolicy`      |                    |
+| `driver.tag`             | `latest`           |
+| `fpga-discovery.enabled` | `true`             |
+| `kubelet`                | `/var/lib/kubelet` |
+| `license`                |                    |
+| `mkrt.image`             | `inaccel/mkrt`     |
+| `mkrt.pullPolicy`        |                    |
+| `mkrt.tag`               | `latest`           |
+| `monitor.image`          | `inaccel/monitor`  |
+| `monitor.port`           |                    |
+| `monitor.pullPolicy`     | `Always`           |
+| `monitor.resources`      |                    |
+| `monitor.tag`            | *APP VERSION*      |
+| `reef.debug`             | `false`            |
+| `reef.image`             | `inaccel/reef`     |
+| `reef.pullPolicy`        |                    |
+| `reef.resources`         |                    |
+| `reef.tag`               | `latest`           |
+| `root.config`            | `/etc/inaccel`     |
+| `root.state`             | `/var/lib/inaccel` |
+| `tests.vadd.image`       | `inaccel/vadd`     |
+| `tests.vadd.platforms`   |                    |
+| `tests.vadd.pullPolicy`  |                    |
+| `tests.vadd.tag`         | `latest`           |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.
