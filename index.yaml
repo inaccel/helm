@@ -9,6 +9,40 @@ entries:
       category: Infrastructure
     apiVersion: v2
     appVersion: "2.1"
+    created: "2021-11-25T14:31:56.188380704Z"
+    dependencies:
+    - alias: fpga-discovery
+      condition: fpga-discovery.enabled
+      name: node-feature-discovery
+      repository: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+      version: 0.9.0
+    description: Simplifying FPGA management in Kubernetes
+    digest: 038c2add2620e7282e78e3e18f7f713f27d5d1eb456929f9b3528b873bfe9505
+    home: https://inaccel.com
+    icon: https://en.gravatar.com/userimage/147236320/2a11cd2992b4521ec287587f03fae35c.png?size=1250
+    keywords:
+    - fpga
+    - infrastructure
+    kubeVersion: '>= 1.18.0-0'
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: fpga-operator
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/helm
+    type: application
+    urls:
+    - https://github.com/inaccel/helm/releases/download/fpga-operator-2.7.0/fpga-operator-2.7.0.tgz
+    version: 2.7.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+      category: Infrastructure
+    apiVersion: v2
+    appVersion: "2.1"
     created: "2021-11-16T21:35:14.597970853Z"
     dependencies:
     - alias: fpga-discovery
@@ -542,4 +576,4 @@ entries:
     urls:
     - https://github.com/inaccel/helm/releases/download/fpga-operator-1.0.0/fpga-operator-1.0.0.tgz
     version: 1.0.0
-generated: "2021-11-16T21:35:14.598146969Z"
+generated: "2021-11-25T14:31:56.188613104Z"
