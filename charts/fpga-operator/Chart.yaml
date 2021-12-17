@@ -1,8 +1,25 @@
 annotations:
+  artifacthub.io/images: |
+    - image: inaccel/coral:2.1
+      name: coral
+    - image: inaccel/daemon:latest
+      name: daemon
+    - image: inaccel/driver:latest
+      name: driver
+    - image: inaccel/mkrt:latest
+      name: mkrt
+    - image: inaccel/monitor:2.1
+      name: monitor
+    - image: inaccel/reef:latest
+      name: reef
+    - image: inaccel/vadd:latest
+      name: tests.vadd
   artifacthub.io/license: Apache-2.0
   artifacthub.io/links: |
     - name: Documentation
       url: https://docs.inaccel.com
+    - name: Support
+      url: https://github.com/inaccel/helm/issues
   category: Infrastructure
 apiVersion: v2
 appVersion: "2.1"
@@ -27,4 +44,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.7.0
+version: 2.7.1
