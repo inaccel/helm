@@ -44,4 +44,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.7.1
+version: 2.7.2

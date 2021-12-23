@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/schema#",
+  "description": "Simplifying FPGA management in Kubernetes",
+  "properties": {
+    "coral": {
+      "properties": {
+        "httpsProxy": {
+          "description": "Sets HTTPS_PROXY environment variable in the container.",
+          "type": "string"
+        },
+        "image": {
+          "description": "Container image name.",
+          "type": "string"
+        },
+        "logLevel": {
+          "description": "Sets LOG_LEVEL environment variable in the container.",
+          "enum": [
+            "all",
+            "trace",
+            "debug",
+            "info",
+            "warn",
+            "error",
+            "fatal",
+            "off"
+          ]
+        },
+        "port": {
+          "description": "Number of port to expose on the host.",
+          "exclusiveMaximum": 65536,
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "resources": {
+          "description": "Compute resources required by this container.",
+          "type": "object"
+        },
+        "tag": {
+          "default": "2.1",
+          "description": "Release version.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "image"
+      ],
+      "type": "object"
+    },
+    "daemon": {
+      "properties": {
+        "debug": {
+          "description": "Argument --debug to the entrypoint.",
+          "type": "boolean"
+        },
+        "image": {
+          "description": "Container image name.",
+          "type": "string"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "resources": {
+          "description": "Compute resources required by this container.",
+          "type": "object"
+        },
+        "tag": {
+          "description": "Release version.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "debug",
+        "image",
+        "tag"
+      ],
+      "type": "object"
+    },
+    "driver": {
+      "properties": {
+        "enabled": {
+          "description": "Indicates whether driver should be enabled.",
+          "type": "boolean"
+        },
+        "image": {
+          "description": "Container image name.",
+          "type": "string"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "tag": {
+          "description": "Release version.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "enabled",
+        "image",
+        "tag"
+      ],
+      "type": "object"
+    },
+    "fpga-discovery": {
+      "properties": {
+        "enabled": {
+          "description": "Dependency condition.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "type": "object"
+    },
+    "kubelet": {
+      "description": "Directory path for managing kubelet files.",
+      "type": "string"
+    },
+    "license": {
+      "description": "String value of the secret license key.",
+      "type": "string"
+    },
+    "mkrt": {
+      "properties": {
+        "image": {
+          "description": "Container image name.",
+          "type": "string"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            null,
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "tag": {
+          "description": "Release version.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "image",
+        "tag"
+      ],
+      "type": "object"
+    },
+    "monitor": {
+      "properties": {
+        "image": {
+          "description": "Container image name.",
+          "type": "string"
+        },
+        "port": {
+          "description": "Number of port to expose on the host.",
+          "exclusiveMaximum": 65536,
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "resources": {
+          "description": "Compute resources required by this container.",
+          "type": "object"
+        },
+        "tag": {
+          "default": "2.1",
+          "description": "Release version.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "image"
+      ],
+      "type": "object"
+    },
+    "reef": {
+      "properties": {
+        "debug": {
+          "description": "Argument --debug to the entrypoint.",
+          "type": "boolean"
+        },
+        "image": {
+          "description": "Container image name.",
+          "type": "string"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "resources": {
+          "description": "Compute resources required by this container.",
+          "type": "object"
+        },
+        "tag": {
+          "description": "Release version.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "debug",
+        "image",
+        "tag"
+      ],
+      "type": "object"
+    },
+    "root": {
+      "properties": {
+        "config": {
+          "description": "Host-specific system configuration.",
+          "type": "string"
+        },
+        "state": {
+          "description": "Variable state information.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "config",
+        "state"
+      ],
+      "type": "object"
+    },
+    "tests": {
+      "properties": {
+        "vadd": {
+          "properties": {
+            "image": {
+              "description": "Container image name.",
+              "type": "string"
+            },
+            "platforms": {
+              "description": "FPGA platforms to test.",
+              "items": {
+                "properties": {
+                  "labels": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "vendor": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "vendor",
+                  "version"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "pullPolicy": {
+              "description": "Image pull policy.",
+              "enum": [
+                "Always",
+                "IfNotPresent",
+                "Never"
+              ]
+            },
+            "tag": {
+              "description": "Release version.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "image",
+            "tag"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "vadd"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "coral",
+    "daemon",
+    "driver",
+    "fpga-discovery",
+    "kubelet",
+    "mkrt",
+    "monitor",
+    "reef",
+    "root",
+    "tests"
+  ],
+  "title": "InAccel FPGA Operator",
+  "type": "object"
+}

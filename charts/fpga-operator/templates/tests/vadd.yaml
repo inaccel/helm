@@ -9,7 +9,7 @@ metadata:
     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
     inaccel/cli: |
       {{- if $platform.labels }}
-      bitstream install https://store.inaccel.com/artifactory/bitstreams/{{ $platform.vendor }}/{{ $platform.name }}/{{ $platform.version }}/{{ $platform.labels }}/vector/1/1addition
+      bitstream install https://store.inaccel.com/artifactory/bitstreams/{{ $platform.vendor }}/{{ $platform.name }}/{{ $platform.version }}/{{ join "_" $platform.labels }}/vector/1/1addition
       {{- else }}
       bitstream install https://store.inaccel.com/artifactory/bitstreams/{{ $platform.vendor }}/{{ $platform.name }}/{{ $platform.version }}/vector/1/1addition
       {{- end }}
