@@ -38,8 +38,9 @@
           "exclusiveMaximum": 65536,
           "exclusiveMinimum": 0,
           "form": true,
+          "multipleOf" : 1,
           "title": "port",
-          "type": "number"
+          "type": "integer"
         },
         "pullPolicy": {
           "description": "Image pull policy.",
@@ -229,8 +230,9 @@
           "exclusiveMaximum": 65536,
           "exclusiveMinimum": 0,
           "form": true,
+          "multipleOf" : 1,
           "title": "port",
-          "type": "number"
+          "type": "integer"
         },
         "pullPolicy": {
           "description": "Image pull policy.",
