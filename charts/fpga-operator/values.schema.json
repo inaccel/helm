@@ -1,15 +1,20 @@
 {
-  "$schema": "https://json-schema.org/schema#",
+  "$schema": "http://json-schema.org/schema#",
   "description": "Simplifying FPGA management in Kubernetes",
   "properties": {
     "coral": {
+      "form": true,
       "properties": {
         "httpsProxy": {
           "description": "Sets HTTPS_PROXY environment variable in the container.",
+          "form": true,
+          "title": "httpsProxy",
           "type": "string"
         },
         "image": {
           "description": "Container image name.",
+          "form": true,
+          "title": "image",
           "type": "string"
         },
         "logLevel": {
@@ -23,12 +28,17 @@
             "error",
             "fatal",
             "off"
-          ]
+          ],
+          "form": true,
+          "title": "logLevel",
+          "type": "string"
         },
         "port": {
           "description": "Number of port to expose on the host.",
           "exclusiveMaximum": 65536,
           "exclusiveMinimum": 0,
+          "form": true,
+          "title": "port",
           "type": "number"
         },
         "pullPolicy": {
@@ -37,15 +47,21 @@
             "Always",
             "IfNotPresent",
             "Never"
-          ]
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
         },
         "resources": {
           "description": "Compute resources required by this container.",
+          "title": "resources",
           "type": "object"
         },
         "tag": {
           "default": "2.1",
           "description": "Release version.",
+          "form": true,
+          "title": "tag",
           "type": "string"
         }
       },
@@ -55,13 +71,18 @@
       "type": "object"
     },
     "daemon": {
+      "form": true,
       "properties": {
         "debug": {
           "description": "Argument --debug to the entrypoint.",
+          "form": true,
+          "title": "debug",
           "type": "boolean"
         },
         "image": {
           "description": "Container image name.",
+          "form": true,
+          "title": "image",
           "type": "string"
         },
         "pullPolicy": {
@@ -70,14 +91,20 @@
             "Always",
             "IfNotPresent",
             "Never"
-          ]
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
         },
         "resources": {
           "description": "Compute resources required by this container.",
+          "title": "resources",
           "type": "object"
         },
         "tag": {
           "description": "Release version.",
+          "form": true,
+          "title": "tag",
           "type": "string"
         }
       },
@@ -89,13 +116,18 @@
       "type": "object"
     },
     "driver": {
+      "form": true,
       "properties": {
         "enabled": {
           "description": "Indicates whether driver should be enabled.",
+          "form": true,
+          "title": "enabled",
           "type": "boolean"
         },
         "image": {
           "description": "Container image name.",
+          "form": true,
+          "title": "image",
           "type": "string"
         },
         "pullPolicy": {
@@ -104,10 +136,15 @@
             "Always",
             "IfNotPresent",
             "Never"
-          ]
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
         },
         "tag": {
           "description": "Release version.",
+          "form": true,
+          "title": "tag",
           "type": "string"
         }
       },
@@ -119,9 +156,12 @@
       "type": "object"
     },
     "fpga-discovery": {
+      "form": true,
       "properties": {
         "enabled": {
           "description": "Dependency condition.",
+          "form": true,
+          "title": "enabled",
           "type": "boolean"
         }
       },
@@ -132,29 +172,40 @@
     },
     "kubelet": {
       "description": "Directory path for managing kubelet files.",
+      "form": true,
+      "title": "kubelet",
       "type": "string"
     },
     "license": {
       "description": "String value of the secret license key.",
+      "form": true,
+      "title": "license",
       "type": "string"
     },
     "mkrt": {
+      "form": true,
       "properties": {
         "image": {
           "description": "Container image name.",
+          "form": true,
+          "title": "image",
           "type": "string"
         },
         "pullPolicy": {
           "description": "Image pull policy.",
           "enum": [
-            null,
             "Always",
             "IfNotPresent",
             "Never"
-          ]
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
         },
         "tag": {
           "description": "Release version.",
+          "form": true,
+          "title": "tag",
           "type": "string"
         }
       },
@@ -165,15 +216,20 @@
       "type": "object"
     },
     "monitor": {
+      "form": true,
       "properties": {
         "image": {
           "description": "Container image name.",
+          "form": true,
+          "title": "image",
           "type": "string"
         },
         "port": {
           "description": "Number of port to expose on the host.",
           "exclusiveMaximum": 65536,
           "exclusiveMinimum": 0,
+          "form": true,
+          "title": "port",
           "type": "number"
         },
         "pullPolicy": {
@@ -182,15 +238,21 @@
             "Always",
             "IfNotPresent",
             "Never"
-          ]
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
         },
         "resources": {
           "description": "Compute resources required by this container.",
+          "title": "resources",
           "type": "object"
         },
         "tag": {
           "default": "2.1",
           "description": "Release version.",
+          "form": true,
+          "title": "tag",
           "type": "string"
         }
       },
@@ -200,13 +262,18 @@
       "type": "object"
     },
     "reef": {
+      "form": true,
       "properties": {
         "debug": {
           "description": "Argument --debug to the entrypoint.",
+          "form": true,
+          "title": "debug",
           "type": "boolean"
         },
         "image": {
           "description": "Container image name.",
+          "form": true,
+          "title": "image",
           "type": "string"
         },
         "pullPolicy": {
@@ -215,14 +282,20 @@
             "Always",
             "IfNotPresent",
             "Never"
-          ]
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
         },
         "resources": {
           "description": "Compute resources required by this container.",
+          "title": "resources",
           "type": "object"
         },
         "tag": {
           "description": "Release version.",
+          "form": true,
+          "title": "tag",
           "type": "string"
         }
       },
@@ -234,13 +307,18 @@
       "type": "object"
     },
     "root": {
+      "form": true,
       "properties": {
         "config": {
           "description": "Host-specific system configuration.",
+          "form": true,
+          "title": "config",
           "type": "string"
         },
         "state": {
           "description": "Variable state information.",
+          "form": true,
+          "title": "state",
           "type": "string"
         }
       },
@@ -256,6 +334,7 @@
           "properties": {
             "image": {
               "description": "Container image name.",
+              "title": "image",
               "type": "string"
             },
             "platforms": {
@@ -285,6 +364,7 @@
                 ],
                 "type": "object"
               },
+              "title": "platforms",
               "type": "array"
             },
             "pullPolicy": {
@@ -293,10 +373,13 @@
                 "Always",
                 "IfNotPresent",
                 "Never"
-              ]
+              ],
+              "title": "pullPolicy",
+              "type": "string"
             },
             "tag": {
               "description": "Release version.",
+              "title": "tag",
               "type": "string"
             }
           },
