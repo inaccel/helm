@@ -20,6 +20,9 @@ annotations:
       url: https://docs.inaccel.com
     - name: Support
       url: https://github.com/inaccel/helm/issues
+  artifacthub.io/signKey: |
+    fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+    url: https://keybase.io/inaccel/pgp_keys.asc
   category: Infrastructure
 apiVersion: v2
 appVersion: "2.1"
@@ -44,4 +47,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.7.4
+version: 2.7.5

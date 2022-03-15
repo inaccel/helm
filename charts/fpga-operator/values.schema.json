@@ -69,6 +69,7 @@
       "required": [
         "image"
       ],
+      "title": "coral",
       "type": "object"
     },
     "daemon": {
@@ -114,6 +115,7 @@
         "image",
         "tag"
       ],
+      "title": "daemon",
       "type": "object"
     },
     "driver": {
@@ -154,6 +156,7 @@
         "image",
         "tag"
       ],
+      "title": "driver",
       "type": "object"
     },
     "fpga-discovery": {
@@ -169,6 +172,7 @@
       "required": [
         "enabled"
       ],
+      "title": "fpga-discovery",
       "type": "object"
     },
     "kubelet": {
@@ -214,6 +218,7 @@
         "image",
         "tag"
       ],
+      "title": "mkrt",
       "type": "object"
     },
     "monitor": {
@@ -261,6 +266,7 @@
       "required": [
         "image"
       ],
+      "title": "monitor",
       "type": "object"
     },
     "reef": {
@@ -306,6 +312,7 @@
         "image",
         "tag"
       ],
+      "title": "reef",
       "type": "object"
     },
     "root": {
@@ -328,6 +335,7 @@
         "config",
         "state"
       ],
+      "title": "root",
       "type": "object"
     },
     "tests": {
@@ -389,12 +397,14 @@
             "image",
             "tag"
           ],
+          "title": "vadd",
           "type": "object"
         }
       },
       "required": [
         "vadd"
       ],
+      "title": "tests",
       "type": "object"
     }
   },
