@@ -17,9 +17,17 @@ jobs:
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
+    - name: Import GPG key
+      run: |
+        echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --dearmor --output keyring.gpg
+        echo "${{ secrets.PASSPHRASE }}" > passphrase-file.txt
     - name: Set up Helm
       uses: azure/setup-helm@v1
     - name: Release charts
-      uses: helm/chart-releaser-action@v1.2.1
+      uses: helm/chart-releaser-action@v1.3.0
       env:
+        CR_KEY: InAccel <info@inaccel.com>
+        CR_KEYRING: keyring.gpg
+        CR_PASSPHRASE_FILE: passphrase-file.txt
+        CR_SIGN: true
         CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
