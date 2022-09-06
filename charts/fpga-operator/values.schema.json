@@ -315,6 +315,14 @@
       "title": "reef",
       "type": "object"
     },
+    "replicas": {
+      "description": "Number of desired pods.",
+      "exclusiveMinimum": 0,
+      "form": true,
+      "multipleOf" : 1,
+      "title": "replicas",
+      "type": "integer"
+    },
     "root": {
       "form": true,
       "properties": {

@@ -75,6 +75,8 @@ reef:
   # resources: ...
   tag: latest
 
+# replicas: ...
+
 root:
   config: /etc/inaccel
   state: /var/lib/inaccel

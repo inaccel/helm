@@ -94,6 +94,7 @@ Operator chart and their default values.
 | `reef.pullPolicy`        | Image pull policy.                                      |                    |
 | `reef.resources`         | Compute resources required by this container.           |                    |
 | `reef.tag`               | Release version.                                        | `latest`           |
+| `replicas`               | Number of desired pods.                                 |                    |
 | `root.config`            | Host-specific system configuration.                     | `/etc/inaccel`     |
 | `root.state`             | Variable state information.                             | `/var/lib/inaccel` |
 | `tests.vadd.image`       | Container image name.                                   | `inaccel/vadd`     |
