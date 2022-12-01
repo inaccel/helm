@@ -34,7 +34,7 @@ dependencies:
   version: 0.10.0
 description: Simplifying FPGA management in Kubernetes
 home: https://inaccel.com
-icon: https://en.gravatar.com/userimage/147236320/2a11cd2992b4521ec287587f03fae35c.png?size=1250
+icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
 keywords:
 - fpga
 - infrastructure
@@ -47,4 +47,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 2.8.0
+version: 2.8.1
