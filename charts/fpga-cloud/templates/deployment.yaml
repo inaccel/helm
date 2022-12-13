@@ -1,0 +1,158 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: cloud-init
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}-cloud-init
+  namespace: {{ $.Release.Namespace }}
+spec:
+  {{- if .Capabilities.APIVersions.Has "cert-manager.io/v1" }}
+  {{- if $.Values.replicas }}
+  replicas: {{ $.Values.replicas }}
+  {{- end }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: cloud-init
+      kind: Deployment
+      {{- include "selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: cloud-init
+      labels:
+        app.kubernetes.io/component: cloud-init
+        kind: Deployment
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --debug={{ $.Values.cloudInit.debug }}
+        image: {{ $.Values.cloudInit.image }}:{{ $.Values.cloudInit.tag }}
+        {{- if $.Values.cloudInit.pullPolicy }}
+        imagePullPolicy: {{ $.Values.cloudInit.pullPolicy }}
+        {{- end }}
+        name: cloud-init
+        {{- if $.Values.cloudInit.resources }}
+        resources:
+          {{- $.Values.cloudInit.resources | toYaml | nindent 10 }}
+        {{- end }}
+        volumeMounts:
+        - mountPath: /etc/inaccel
+          name: config-root
+          readOnly: true
+      hostAliases:
+      - hostnames:
+        - cloud-init
+        ip: 127.0.0.1
+      initContainers:
+      - args:
+        - init
+        env:
+        - name: MUTATING_WEBHOOK_CONFIGURATION_NAME
+          value: {{ $.Chart.Name }}-cloud-init
+        image: {{ $.Values.cloudInit.image }}:{{ $.Values.cloudInit.tag }}
+        {{- if $.Values.cloudInit.pullPolicy }}
+        imagePullPolicy: {{ $.Values.cloudInit.pullPolicy }}
+        {{- end }}
+        name: cloud-init-init
+        volumeMounts:
+        - mountPath: /etc/inaccel
+          name: config-root
+      priorityClassName: system-cluster-critical
+      serviceAccountName: {{ $.Chart.Name }}
+      volumes:
+      {{- if .Capabilities.APIVersions.Has "cert-manager.io/v1" }}
+      - name: config-root
+        secret:
+          items:
+          - key: tls.crt
+            path: certs/ssl.pem
+          - key: tls.key
+            path: private/ssl.key
+          secretName: {{ $.Chart.Name }}
+      {{- else }}
+      - emptyDir: {}
+        name: config-root
+      {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: kubevirt-hack
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}-kubevirt-hack
+  namespace: {{ $.Release.Namespace }}
+spec:
+  {{- if .Capabilities.APIVersions.Has "cert-manager.io/v1" }}
+  {{- if $.Values.replicas }}
+  replicas: {{ $.Values.replicas }}
+  {{- end }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: kubevirt-hack
+      kind: Deployment
+      {{- include "selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: kubevirt-hack
+      labels:
+        app.kubernetes.io/component: kubevirt-hack
+        kind: Deployment
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --debug={{ $.Values.kubevirtHack.debug }}
+        image: {{ $.Values.kubevirtHack.image }}:{{ $.Values.kubevirtHack.tag }}
+        {{- if $.Values.kubevirtHack.pullPolicy }}
+        imagePullPolicy: {{ $.Values.kubevirtHack.pullPolicy }}
+        {{- end }}
+        name: kubevirt-hack
+        {{- if $.Values.kubevirtHack.resources }}
+        resources:
+          {{- $.Values.kubevirtHack.resources | toYaml | nindent 10 }}
+        {{- end }}
+        volumeMounts:
+        - mountPath: /etc/inaccel
+          name: config-root
+          readOnly: true
+      hostAliases:
+      - hostnames:
+        - kubevirt-hack
+        ip: 127.0.0.1
+      initContainers:
+      - args:
+        - init
+        env:
+        - name: MUTATING_WEBHOOK_CONFIGURATION_NAME
+          value: {{ $.Chart.Name }}-kubevirt-hack
+        image: {{ $.Values.kubevirtHack.image }}:{{ $.Values.kubevirtHack.tag }}
+        {{- if $.Values.kubevirtHack.pullPolicy }}
+        imagePullPolicy: {{ $.Values.kubevirtHack.pullPolicy }}
+        {{- end }}
+        name: kubevirt-hack-init
+        volumeMounts:
+        - mountPath: /etc/inaccel
+          name: config-root
+      priorityClassName: system-cluster-critical
+      serviceAccountName: {{ $.Chart.Name }}
+      volumes:
+      {{- if .Capabilities.APIVersions.Has "cert-manager.io/v1" }}
+      - name: config-root
+        secret:
+          items:
+          - key: tls.crt
+            path: certs/ssl.pem
+          - key: tls.key
+            path: private/ssl.key
+          secretName: {{ $.Chart.Name }}
+      {{- else }}
+      - emptyDir: {}
+        name: config-root
+      {{- end }}

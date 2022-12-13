@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Simplifying FPGA management in Harvester",
+  "properties": {
+    "cloudInit": {
+      "form": true,
+      "properties": {
+        "debug": {
+          "description": "Argument --debug to the entrypoint.",
+          "form": true,
+          "title": "debug",
+          "type": "boolean"
+        },
+        "image": {
+          "description": "Container image name.",
+          "form": true,
+          "title": "image",
+          "type": "string"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
+        },
+        "resources": {
+          "description": "Compute resources required by this container.",
+          "title": "resources",
+          "type": "object"
+        },
+        "tag": {
+          "description": "Release version.",
+          "form": true,
+          "title": "tag",
+          "type": "string"
+        }
+      },
+      "required": [
+        "debug",
+        "image",
+        "tag"
+      ],
+      "title": "cloud-init",
+      "type": "object"
+    },
+    "kubevirtHack": {
+      "form": true,
+      "properties": {
+        "debug": {
+          "description": "Argument --debug to the entrypoint.",
+          "form": true,
+          "title": "debug",
+          "type": "boolean"
+        },
+        "image": {
+          "description": "Container image name.",
+          "form": true,
+          "title": "image",
+          "type": "string"
+        },
+        "pullPolicy": {
+          "description": "Image pull policy.",
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "form": true,
+          "title": "pullPolicy",
+          "type": "string"
+        },
+        "resources": {
+          "description": "Compute resources required by this container.",
+          "title": "resources",
+          "type": "object"
+        },
+        "tag": {
+          "description": "Release version.",
+          "form": true,
+          "title": "tag",
+          "type": "string"
+        }
+      },
+      "required": [
+        "debug",
+        "image",
+        "tag"
+      ],
+      "title": "kubevirt-hack",
+      "type": "object"
+    },
+    "replicas": {
+      "description": "Number of desired pods.",
+      "exclusiveMinimum": 0,
+      "form": true,
+      "multipleOf" : 1,
+      "title": "replicas",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "cloudInit",
+    "kubevirtHack"
+  ],
+  "title": "InAccel FPGA Cloud",
+  "type": "object"
+}

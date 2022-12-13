@@ -1,0 +1,14 @@
+{{- range $templateId, $template := $.Values.templates }}
+---
+apiVersion: harvesterhci.io/v1beta1
+kind: VirtualMachineTemplate
+metadata:
+  annotations:
+    field.cattle.io/description: {{ $template.name }}
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ kebabcase $templateId }}
+  namespace: harvester-public
+spec:
+  defaultVersionId: harvester-public/{{ kebabcase $templateId }}-{{ $.Release.Revision }}
+{{- end }}

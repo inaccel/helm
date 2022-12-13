@@ -1,0 +1,34 @@
+{{- range $templateId, $template := $.Values.templates }}
+---
+apiVersion: harvesterhci.io/v1beta1
+kind: VirtualMachineTemplateVersion
+metadata:
+  annotations:
+    helm.sh/resource-policy: keep
+    template-version.harvesterhci.io/customName: {{ $template.name }} - {{ $.Release.Revision }}
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ kebabcase $templateId }}-{{ $.Release.Revision }}
+  namespace: harvester-public
+spec:
+  templateId: harvester-public/{{ kebabcase $templateId }}
+  vm:
+    spec:
+      template:
+        spec:
+          domain:
+            cpu:
+              cores: {{ $template.cpu }}
+            devices:
+              interfaces:
+              - bridge: {}
+                model: virtio
+                name: public
+            resources:
+              limits:
+                memory: {{ $template.memory }}
+          networks:
+          - name: public
+            multus:
+              networkName: harvester-public/public
+{{- end }}

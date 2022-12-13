@@ -1,0 +1,43 @@
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  {{- if .Capabilities.APIVersions.Has "cert-manager.io/v1" }}
+  annotations:
+    cert-manager.io/inject-ca-from: {{ $.Release.Namespace }}/{{ $.Chart.Name }}
+  {{- end }}
+  labels:
+    app.kubernetes.io/component: cloud-init
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}-cloud-init
+webhooks:
+- admissionReviewVersions: ["v1"]
+  clientConfig:
+    service:
+      name: {{ $.Chart.Name }}-cloud-init
+      namespace: {{ $.Release.Namespace }}
+  name: cloud-init.inaccel.com
+  sideEffects: None
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  {{- if .Capabilities.APIVersions.Has "cert-manager.io/v1" }}
+  annotations:
+    cert-manager.io/inject-ca-from: {{ $.Release.Namespace }}/{{ $.Chart.Name }}
+  {{- end }}
+  labels:
+    app.kubernetes.io/component: kubevirt-hack
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}-kubevirt-hack
+webhooks:
+- admissionReviewVersions: ["v1"]
+  clientConfig:
+    service:
+      name: {{ $.Chart.Name }}-kubevirt-hack
+      namespace: {{ $.Release.Namespace }}
+  name: kubevirt-hack.inaccel.com
+  objectSelector:
+    matchLabels:
+      kubevirt.io: virt-launcher
+  sideEffects: None
