@@ -45,9 +45,8 @@ networks:
   vlan:
     name: VLAN
     subnetworks:
-      default:
-        id: 1
-        name: Default
+      1:
+        name: Default (1)
 
 # replicas: ...
 

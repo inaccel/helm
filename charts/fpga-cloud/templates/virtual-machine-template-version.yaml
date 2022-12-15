@@ -23,12 +23,12 @@ spec:
               interfaces:
               - bridge: {}
                 model: virtio
-                name: public
+                name: default
             resources:
               limits:
                 memory: {{ $template.memory }}
           networks:
-          - name: public
+          - name: default
             multus:
-              networkName: harvester-public/public
+              networkName: harvester-public/vlan-1
 {{- end }}
