@@ -24,7 +24,7 @@ To uninstall/delete the `my-fpga-cloud` deployment:
 $ helm uninstall my-fpga-cloud
 ```
 
-The command removes all the Kubernetes components associated with the chart and
+The command removes all the Harvester components associated with the chart and
 deletes the release.
 
 ## Parameters
