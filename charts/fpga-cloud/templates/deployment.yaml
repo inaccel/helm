@@ -30,6 +30,7 @@ spec:
       containers:
       - args:
         - --debug={{ $.Values.cloudInit.debug }}
+        - --enable-virtualmachine-controller
         image: {{ $.Values.cloudInit.image }}:{{ $.Values.cloudInit.tag }}
         {{- if $.Values.cloudInit.pullPolicy }}
         imagePullPolicy: {{ $.Values.cloudInit.pullPolicy }}
