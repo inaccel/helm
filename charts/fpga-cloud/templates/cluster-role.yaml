@@ -14,7 +14,7 @@ rules:
   verbs: ["get", "update"]
 - apiGroups: ["kubevirt.io"]
   resources: ["kubevirts"]
-  verbs: ["get", "patch"]
+  verbs: ["get"]
 - apiGroups: ["kubevirt.io"]
   resources: ["virtualmachines"]
   verbs: ["get", "list", "update", "watch"]

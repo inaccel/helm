@@ -32,19 +32,25 @@ deletes the release.
 The following table lists the configurable parameters of the InAccel FPGA Cloud
 chart and their default values.
 
-| Parameter                 | Description                                   | Default                 |
-| ------------------------- | --------------------------------------------- | ----------------------- |
-| `cloudInit.debug`         | Argument --debug to the entrypoint.           | `false`                 |
-| `cloudInit.image`         | Container image name.                         | `inaccel/cloud-init`    |
-| `cloudInit.pullPolicy`    | Image pull policy.                            |                         |
-| `cloudInit.resources`     | Compute resources required by this container. |                         |
-| `cloudInit.tag`           | Release version.                              | `latest`                |
-| `kubevirtHack.debug`      | Argument --debug to the entrypoint.           | `false`                 |
-| `kubevirtHack.image`      | Container image name.                         | `inaccel/kubevirt-hack` |
-| `kubevirtHack.pullPolicy` | Image pull policy.                            |                         |
-| `kubevirtHack.resources`  | Compute resources required by this container. |                         |
-| `kubevirtHack.tag`        | Release version.                              | `latest`                |
-| `replicas`                | Number of desired pods.                       |                         |
+| Parameter                   | Description                                   | Default                   |
+| --------------------------- | --------------------------------------------- | ------------------------- |
+| `cloudInit.debug`           | Argument --debug to the entrypoint.           | `false`                   |
+| `cloudInit.image`           | Container image name.                         | `inaccel/cloud-init`      |
+| `cloudInit.pullPolicy`      | Image pull policy.                            |                           |
+| `cloudInit.resources`       | Compute resources required by this container. |                           |
+| `cloudInit.tag`             | Release version.                              | `latest`                  |
+| `deviceSelector.debug`      | Argument --debug to the entrypoint.           | `false`                   |
+| `deviceSelector.image`      | Container image name.                         | `inaccel/device-selector` |
+| `deviceSelector.pullPolicy` | Image pull policy.                            |                           |
+| `deviceSelector.resources`  | Compute resources required by this container. |                           |
+| `deviceSelector.tag`        | Release version.                              | `latest`                  |
+| `kubelet`                   | Directory path for managing kubelet files.    | `/var/lib/kubelet`        |
+| `kubevirtHack.debug`        | Argument --debug to the entrypoint.           | `false`                   |
+| `kubevirtHack.image`        | Container image name.                         | `inaccel/kubevirt-hack`   |
+| `kubevirtHack.pullPolicy`   | Image pull policy.                            |                           |
+| `kubevirtHack.resources`    | Compute resources required by this container. |                           |
+| `kubevirtHack.tag`          | Release version.                              | `latest`                  |
+| `replicas`                  | Number of desired pods.                       |                           |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.

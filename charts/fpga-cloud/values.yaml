@@ -5,34 +5,14 @@ cloudInit:
   # resources: ...
   tag: latest
 
-fpga:
-  vendors:
-    intel:
-      devices:
-        pac_a10:
-          images:
-            ubuntu1804:
-              name: Ubuntu 18.04
-              url: https://inaccel.s3.amazonaws.com/cloud-images/intel-fpga-pac_a10-ubuntu1804.qcow2
-          name: PAC A10
-          selector: 09c4
-        pac_s10:
-          images:
-            ubuntu1804:
-              name: Ubuntu 18.04
-              url: https://inaccel.s3.amazonaws.com/cloud-images/intel-fpga-pac_s10-ubuntu1804.qcow2
-          name: PAC S10
-          selector: 0b2b
-          variants:
-            pac_s10_usm:
-              name: PAC S10 USM
-      name: Intel
-      selector: 8086
+deviceSelector:
+  debug: false
+  image: inaccel/device-selector
+  # pullPolicy: ...
+  # resources: ...
+  tag: latest
 
-images:
-  ubuntu1804:
-    name: Ubuntu 18.04
-    url: https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
+kubelet: /var/lib/kubelet
 
 kubevirtHack:
   debug: false
@@ -41,25 +21,4 @@ kubevirtHack:
   # resources: ...
   tag: latest
 
-networks:
-  vlan:
-    name: VLAN
-    subnetworks:
-      1:
-        name: Default (1)
-
 # replicas: ...
-
-templates:
-  large:
-    cpu: 16
-    memory: 32Gi
-    name: Large
-  medium:
-    cpu: 8
-    memory: 16Gi
-    name: Medium
-  small:
-    cpu: 4
-    memory: 8Gi
-    name: Small

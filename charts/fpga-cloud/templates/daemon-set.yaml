@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      kind: DaemonSet
+      {{- include "selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: device-selector
+      labels:
+        kind: DaemonSet
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --debug={{ $.Values.deviceSelector.debug }}
+        env:
+        - name: KUBE_VIRT_NAME
+          value: kubevirt
+        - name: KUBE_VIRT_NAMESPACE
+          value: harvester-system
+        image: {{ $.Values.deviceSelector.image }}:{{ $.Values.deviceSelector.tag }}
+        {{- if $.Values.deviceSelector.pullPolicy }}
+        imagePullPolicy: {{ $.Values.deviceSelector.pullPolicy }}
+        {{- end }}
+        name: device-selector
+        {{- if $.Values.deviceSelector.resources }}
+        resources:
+          {{- $.Values.deviceSelector.resources | toYaml | nindent 10 }}
+        {{- end }}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /lib/modules
+          name: modules
+        - mountPath: /sys
+          name: sys
+        - mountPath: /var/lib/kubelet/plugins_registry
+          name: kubelet
+          subPath: plugins_registry
+      hostAliases:
+      - hostnames:
+        - device-selector
+        ip: 127.0.0.1
+      priorityClassName: system-node-critical
+      serviceAccountName: {{ $.Chart.Name }}
+      volumes:
+      - hostPath:
+          path: {{ $.Values.kubelet }}
+        name: kubelet
+      - hostPath:
+          path: /lib/modules
+        name: modules
+      - hostPath:
+          path: /sys
+        name: sys
