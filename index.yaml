@@ -18,6 +18,42 @@ entries:
         url: https://keybase.io/inaccel/pgp_keys.asc
       category: Infrastructure
     apiVersion: v2
+    created: "2024-03-05T03:58:29.327165394Z"
+    description: Simplifying FPGA management in Harvester
+    digest: fab16227935e32cd2bcf83c2a7a6138246854bd6042ead2e1be61d8231a17483
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - infrastructure
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: fpga-cloud
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/helm
+    type: application
+    urls:
+    - https://github.com/inaccel/helm/releases/download/fpga-cloud-1.2.0/fpga-cloud-1.2.0.tgz
+    version: 1.2.0
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/cloud-init:latest
+          name: cloud-init
+        - image: inaccel/kubevirt-hack:latest
+          name: kubevirt-hack
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/helm/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      category: Infrastructure
+    apiVersion: v2
     appVersion: 1.0.3
     created: "2023-03-07T14:52:51.952441981Z"
     description: Simplifying FPGA management in Harvester
@@ -1199,4 +1235,4 @@ entries:
     urls:
     - https://github.com/inaccel/helm/releases/download/fpga-operator-1.0.0/fpga-operator-1.0.0.tgz
     version: 1.0.0
-generated: "2024-01-17T18:01:10.342998194Z"
+generated: "2024-03-05T03:58:29.327268837Z"
