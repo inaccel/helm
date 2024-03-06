@@ -46,6 +46,8 @@ spec:
         - mountPath: /var/lib/kubelet/plugins_registry
           name: kubelet
           subPath: plugins_registry
+        - mountPath: /var/run/kubevirt-hooks
+          name: kubevirt-hooks
       hostAliases:
       - hostnames:
         - device-selector
@@ -56,6 +58,10 @@ spec:
       - hostPath:
           path: {{ $.Values.kubelet }}
         name: kubelet
+      - hostPath:
+          path: /var/run/kubevirt-hooks
+          type: DirectoryOrCreate
+        name: kubevirt-hooks
       - hostPath:
           path: /lib/modules
         name: modules

@@ -2,6 +2,8 @@ annotations:
   artifacthub.io/images: |
     - image: inaccel/cloud-init:latest
       name: cloud-init
+    - image: inaccel/device-selector:latest
+      name: device-selector
     - image: inaccel/kubevirt-hack:latest
       name: kubevirt-hack
   artifacthub.io/license: Apache-2.0
@@ -29,4 +31,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/helm
 type: application
-version: 1.2.0
+version: 1.2.1
